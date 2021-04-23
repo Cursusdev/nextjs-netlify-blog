@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { PostContent } from "../lib/posts";
 import { TagContent } from "../lib/tags";
 import PostItem from "./PostItem";
@@ -13,10 +14,43 @@ type Props = {
   };
 };
 export default function TagPostList({ posts, tag, pagination }: Props) {
+  const router = useRouter();
+  
+  const href = () => {
+    if (router.pathname === '/') {
+      return "/posts/tags/[[...slug]]"
+    }
+    if (router.pathname.includes('/posts')) {
+      return "/posts/tags/[[...slug]]"
+    }
+    if (router.pathname.includes('/list')) {
+      return "/list/tags/[[...slug]]"
+    }
+  }
+
+  const as = (page) => {
+    if (router.pathname === '/') {
+      return page === 1 
+        ? "/posts/tags/" + tag.slug
+        : `/posts/tags/${tag.slug}/${page}`
+    }
+    if (router.pathname.includes('/posts')) {
+      return page === 1
+        ? "/posts/tags/" + tag.slug
+        : `/posts/tags/${tag.slug}/${page}`
+    }
+    if (router.pathname.includes('/list')) {
+      return page === 1
+        ? "/list/tags/" + tag.slug
+        : `/posts/tags/${tag.slug}/${page}`
+    }
+
+  }
+
   return (
     <div className={"container"}>
       <h1>
-        All posts / <span>{tag.name}</span>
+        # <span>{tag.name}</span>
       </h1>
       <ul>
         {posts.map((it, i) => (
@@ -29,11 +63,8 @@ export default function TagPostList({ posts, tag, pagination }: Props) {
         current={pagination.current}
         pages={pagination.pages}
         link={{
-          href: () => "/posts/tags/[[...slug]]",
-          as: (page) =>
-            page === 1
-              ? "/posts/tags/" + tag.slug
-              : `/posts/tags/${tag.slug}/${page}`,
+          href: () => href(),
+          as: (page) => as(page),
         }}
       />
       <style jsx>
@@ -66,7 +97,6 @@ export default function TagPostList({ posts, tag, pagination }: Props) {
             list-style: none;
             margin-bottom: 1.5rem;
           }
-
           @media (min-width: 769px) {
             h1 {
               font-size: 2rem;

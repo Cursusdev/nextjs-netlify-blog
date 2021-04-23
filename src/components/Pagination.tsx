@@ -11,6 +11,7 @@ type Props = {
 };
 export default function Pagination({ current, pages, link }: Props) {
   const pagination = generatePagination(current, pages);
+
   return (
     <ul>
       {pagination.map((it, i) => (
@@ -27,7 +28,7 @@ export default function Pagination({ current, pages, link }: Props) {
       <style jsx>{`
         ul {
           list-style: none;
-          margin: 3rem 0 0 0;
+          margin: 1rem 0 3rem 0;
           padding: 0;
         }
         li {
@@ -39,6 +40,11 @@ export default function Pagination({ current, pages, link }: Props) {
         a.active {
           color: #222;
           font-weight: bold;
+        }
+        @media(min-width: 769px) {
+          ul {
+            padding-bottom: 3rem;
+          }
         }
       `}</style>
     </ul>

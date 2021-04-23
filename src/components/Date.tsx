@@ -1,4 +1,5 @@
-import { format, formatISO } from "date-fns";
+import { format, formatISO, formatDistance } from "date-fns";
+import { fr } from 'date-fns/locale'
 
 type Props = {
   date: Date;
@@ -6,7 +7,7 @@ type Props = {
 export default function Date({ date }: Props) {
   return (
     <time dateTime={formatISO(date)}>
-      <span>{format(date, "LLLL d, yyyy")}</span>
+      <span>{format(date, "d MMMM yyyy", { locale: fr })}</span>
       <style jsx>
         {`
           span {

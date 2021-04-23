@@ -92,7 +92,7 @@ export default function Index({
           {`
             .container {
               display: block;
-              max-width: 36rem;
+              max-width: 42rem;
               width: 100%;
               margin: 0 auto;
               padding: 0 1.5rem;
@@ -123,7 +123,6 @@ export default function Index({
               margin-top: 3rem;
               text-align: center;
             }
-
             @media (min-width: 769px) {
               .container {
                 display: flex;

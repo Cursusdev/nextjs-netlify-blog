@@ -1,5 +1,6 @@
 import React from "react";
-import Twitter from "../assets/twitter-alt.svg";
+import Email from "../assets/envelope-alt.svg";
+import LinkedIn from "../assets/linkedin-alt.svg";
 import GitHub from "../assets/github-alt.svg";
 import config from "../lib/config";
 
@@ -7,12 +8,20 @@ export function SocialList({}) {
   return (
     <div>
       <a
-        title="Twitter"
-        href={`https://twitter.com/${config.twitter_account}`}
+        title="GitHub"
+        href={`mailto:${config.email_account}`}
         target="_blank"
         rel="noopener"
       >
-        <Twitter width={24} height={24} fill={"#222"} />
+        <Email width={22} height={22} fill={"#222"} style={{ marginTop: '5px' }} />
+      </a>
+      <a
+        title="LinkedIn"
+        href={`https://www.linkedin.com/in/${config.linkedin_account}`}
+        target="_blank"
+        rel="noopener"
+      >
+        <LinkedIn width={23} height={23} fill={"#222"}  style={{ marginBottom: '2px' }}/>
       </a>
       <a
         title="GitHub"
@@ -23,6 +32,9 @@ export function SocialList({}) {
         <GitHub width={24} height={24} fill={"#222"} />
       </a>
       <style jsx>{`
+        // div {
+        //   min-height: 35px;
+        // }
         a {
           display: inline-block;
         }

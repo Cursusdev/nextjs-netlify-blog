@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { PostContent } from "../lib/posts";
 import PostItem from "./PostItem";
 import TagLink from "./TagLink";
@@ -14,6 +15,32 @@ type Props = {
   };
 };
 export default function PostList({ posts, tags, pagination }: Props) {
+  const router = useRouter();
+  
+  const href = (page: number) => {
+    if (router.pathname === '/') {
+      return page === 1 ? "/posts" : "/posts/page/[page]"
+    }
+    if (router.pathname.includes('/posts')) {
+      return page === 1 ? "/posts" : "/posts/page/[page]"
+    }
+    if (router.pathname.includes('/list')) {
+      return page === 1 ? "/list" : "/list/page/[page]"
+    }
+  }
+
+  const as = (page: number) => {
+    if (router.pathname === '/') {
+      return page === 1 ? null : "/posts/page/" + page
+    }
+    if (router.pathname.includes('/posts')) {
+      return page === 1 ? null : "/posts/page/" + page
+    }
+    if (router.pathname.includes('/list')) {
+      return page === 1 ? null : "/list/page/" + page
+    }
+  }
+
   return (
     <div className={"container"}>
       <div className={"posts"}>
@@ -21,6 +48,7 @@ export default function PostList({ posts, tags, pagination }: Props) {
           {posts.map((it, i) => (
             <li key={i}>
               <PostItem post={it} />
+              <hr />
             </li>
           ))}
         </ul>
@@ -28,8 +56,8 @@ export default function PostList({ posts, tags, pagination }: Props) {
           current={pagination.current}
           pages={pagination.pages}
           link={{
-            href: (page) => (page === 1 ? "/posts" : "/posts/page/[page]"),
-            as: (page) => (page === 1 ? null : "/posts/page/" + page),
+            href: (page) => href(page),
+            as: (page) => as(page),
           }}
         />
       </div>
@@ -43,10 +71,9 @@ export default function PostList({ posts, tags, pagination }: Props) {
       <style jsx>{`
         .container {
           display: flex;
-          margin: 0 auto;
           max-width: 1200px;
-          width: 100%;
-          padding: 0 1.5rem;
+          width: 100vw;
+          margin: 0 5vw;
         }
         ul {
           margin: 0;
@@ -66,16 +93,37 @@ export default function PostList({ posts, tags, pagination }: Props) {
         .post-list {
           flex: 1 0 auto;
         }
+        .post-list li {
+          display: block;
+        }
+        hr {
+          width: 30vw;
+        }
         .categories {
           display: none;
         }
-        .categories li {
-          margin-bottom: 0.75em;
-        }
-
         @media (min-width: 769px) {
+          .container {
+            width: 83vw;
+          }
+          .post-list li {
+            display: inline-block;
+          }
           .categories {
             display: block;
+            margin-left: 2rem;
+          }
+          .categories li {
+            width: 15vw;
+            margin: 1rem 0 .75rem 1.2rem;
+          }
+          hr {
+            display: none;
+          }
+          @media(min-width: 769px) {
+            .container {
+              margin: 0 0 0 5vw;
+            }
           }
         }
       `}</style>

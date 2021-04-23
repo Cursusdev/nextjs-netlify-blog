@@ -22,13 +22,16 @@ export default function Layout({ children }: Props) {
         {`
           .root {
             display: block;
-            padding: 4rem 0;
+            padding: 0;
+            margin: 0;
             box-sizing: border-box;
-            height: 100%;
+            // height: 100%;
+            // max-width: 100vw;
           }
           main {
+            padding-top: 4rem; 
             display: flex;
-            min-height: 100%;
+            // min-height: 100%;
           }
           @media (min-width: 769px) {
             .root {
@@ -37,6 +40,9 @@ export default function Layout({ children }: Props) {
             }
             main {
               flex: 1 0 auto;
+              // max-width: 100%;
+              // width: 100%;
+              // background: red;
             }
           }
         `}

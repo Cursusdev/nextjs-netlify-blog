@@ -1,0 +1,68 @@
+---
+slug: react-demo
+title: Mon travail de réalisation de mon site - React demo App
+desc: J'ai un premier site web monopage avec React et je voudrais vous le faire voir à travers quelques explications. À la base ce site a été réalisé pour montrer mes compétences sur mon cv un peu démunie. L'application de démonstration utilise la bibliothèque React17 dans sa version la plus récente. Axée sur l'expérience utilisateur(trice), elle est imparfaite car c'est mon premier cas d'études de ses fonctionnalités. Les objectifs étant de réaliser des cas pratiques d'utilisations en production.
+img: http://localhost:3000/images/esther-tuttle-kOjf_1hGy28-unsplash_1200w900h.jpg
+date: 2021-04-22
+author: ygoalen
+tags:
+  - single-page
+---
+
+![alt text](http://localhost:3000/images/esther-tuttle-kOjf_1hGy28-unsplash_1200w900h.jpg "Photo de présentation")
+
+## Introduction
+
+J'ai un premier site web monopage avec [React](https://fr.reactjs.org/ "Site de React") et je voudrais vous le faire voir à travers quelques explications. À la base ce site a été réalisé pour montrer mes compétences sur mon cv un peu démunie. L'application de démonstration utilise la bibliothèque React17 dans sa version la plus récente. Axée sur l'expérience utilisateur(trice), elle est imparfaite car c'est mon premier cas d'études de ses fonctionnalités. Les objectifs étant de réaliser des cas pratiques d'utilisations en production. À terme l'application pourra éliminer une dette technique encore en excès.
+
+Une liste des principales pages disponibles du site [react-demo-de93f.web.app](https://react-demo-de93f.web.app/home  "Site de React demo"):
+
+![alt text](http://localhost:3000/images/react-demo_1200w900h.jpg "Image de la page d'accueil du site")
+ - [page Home](https://react-demo-de93f.web.app/home "lien de la page Home")
+ - [page Todo](https://react-demo-de93f.web.app/todo "Lien de la page Todo")
+ - [page SignIn](https://react-demo-de93f.web.app/login "lien de la page Login")
+ - [page SignUp](https://react-demo-de93f.web.app/register "lien de la page Register")
+ - [page Profil](https://react-demo-de93f.web.app/profil "Lien de la page Profil") (authentification requise)
+
+Comme la gratuité est mon moteur de fonctionnement, j'ai choisi React parce qu'il permet d'avoir une interface utilisateur(trice) pour ce quoi c'est conçu et parce que les fichiers statiques transpillés ES5 peuvent fonctionner avec node js depuis le dossier de construction de l'application, avec Docker, avec un hébergeur et tout autre environnement de production ou de stockage. 
+
+
+
+## Démarches
+
+Certaines des routes nécessitent une authentification, les pages Home et Todo (todo list) permettent à l'utilisateur(trice) de changer de page. La page Home contient un nuage de mot-clés et la page Todo contient un todo liste fonctionnant en toute autonomie avec IndexedDB (interne au navigateur). 
+
+L'authentification email/mot de passe ainsi qu'une identification par lien social anonyme autorise un lien vers le profil de son utilisateur(trice) ou la possibilité de changer de mot de passe fonctionnant avec [Firebase](https://firebase.google.com/?hl=fr "Site de Firebase") authentification. Pour changer de mot de passe l'application communique une demande d'envoi d'émail via une méthode Firebase. L'utilisateur(trice) est invité à cliquer sur le lien dans son email qui l'amène dans un nouvel onglet un modal où rentrer le mot de passe courant et le nouveau mot de passe.
+
+Le lien anonyme est particulier et je voulais lui révéler son intérêt avec sa connexion rapide et ce fût une approche déplaisante. Il faut savoir qu'un utilisateur(trice) anonyme peut s'enregistrer après s'être connecté mais comme nouveau(velle) utilisateur(trice) ainsi par-dessus un utilisateur(trice) existant(e) et ainsi l'écrasé. Les composants qui sont les unités de réutilisation de code React sont importés sur les composants parents via un index pour permettent une meilleur gestion des composants enfants.
+
+Simple d'utilisation, le code est travaillé avec des hooks de React. Les hooks nouvellement introduits avec React v16.8, c'est bien surtout que je n'ai pas encore codé avec les classes alors c'est mieux. Parfois les hooks personnalisés se révèleront plus abordables dans leurs réalisations et plus adaptés à mon utilisation que celles inscrites en bibliothèques. La bibliothèque [Styled-components](https://styled-components.com/ "Site de Styled-components") gère le thème et le svg. C'est une réelle surprise de réussir des images svg dans une organisation de code CSS utilisé à 100% dans le HTML lors de sa compilation avec [Webpack](https://webpack.js.org/ "Site de Webpack").
+
+Le thème sombre est un hook personnalisé qui fonctionne sur le thème courant de votre navigateur et se branche au toogle positionné dans la base de navigation. L'API contexte contient tous mes états et elle est aussi présente dans mes hooks. Les utilisations de leurs providers sont volontairement différentes afin de les éprouver. Un hook gère les erreurs et les informations émissent dans des pop-up qui informent son utilisateur(trice) de son avancement à travers les différentes pages. 
+
+L'application est responsive et possède des Services Workers pour une installation sur le bureau (appareil digital) ou pour une utilisation hors réseau.
+
+
+
+## Objectifs
+
+Le site est simple et peut contenir peu ou pas d'information utile à son utilisation mais l'objectif est de se rapprocher  d'une preuve de concept. L'utilisateur(trice) est occupé(e) avec les animations qui suivent sa progression dans ses rentrées de données d'authentification. Un effet de réactivité de l'application au service de son utilisateur(trice) qui s'accompagne d'un certain nombre d'informations cohérentes et peu utiles.
+
+J'ai tenu à obtenir le nom de l'utilisateur(trice) dans la barre de navigation. Ainsi que la prise en compte lors d'une modification dans le profil. Ce qu'il faut savoir c'est que le maintien de la session de l'utilisateur(trice) est effectuée par Firebase, située dans indexedDB, qui communique un utilisateur(trice) à null à chacun des évènements DOM. L'utilisation du LocalStorage qui n'était pas nécessaire permettra de maintenir la présence de son utilisateur(trice) le temps de chargement de Firebase d'une fraction de seconde.
+
+Le RGPD est respecté avec l'acceptation de ceux-ci puis retrouver dans la barre de navigation sous le point d'interrogation avec un "A propos!" à travers des modals. Les CGU (Conditions Générales d'Utilisations) sont à valider par l'utilisateur(trice) sans quoi l'enregistrement des données d'authentification n'est pas pris en compte. L'utilisateur(trice) anonyme est simplement invité à s'enregistrer comme nouveau(velle) utilisateur(trice).
+
+
+
+## Production
+
+Le code de l'application React v17 est transpilé avec [babel](https://babeljs.io/ "Site de Babel") v7 et à l'aide [Webpack](https://webpack.js.org/ "Site de Webpack") v5 et marque ainsi une progression dans la réalisation de mon code de production pour mes sites statiques. La recherche de performances avec Chrome DevTools m'a permis de voir l'efficacité de Webpack combiné avec React. Mais ce n'est pas encore ça, l'import dynamique du code nuit à l'expérience utilisateur(trice) avec un scintillement d'une page blanche dans mon thème sombre. Mais l'essentiel est réalisé pour l'accessibilité, les bonnes pratiques et le SEO.
+
+La mise en production des fichiers de construction, transpillés ES5, est déployée via le SDK Firebase installé en local pour un  hébergement et une authentification Firebase.
+
+
+
+## Conclusion
+
+Il faut très peu de temps pour parcourir tout le processus d'identification. L'information révèle peu d'intérêt pour l'utilisateur(trice), qui a déjà procédé à des authentifications du même type. Mais l'application est moderne, la réutilisation du code est comprise ainsi que l'utilisation de l'API contexte et des hooks de React. Le mode "non c’est bon les détails on s’en fout, de toute façon c’est trop cher…", c'est maintenant avant le grand saut du retour au travail.
+

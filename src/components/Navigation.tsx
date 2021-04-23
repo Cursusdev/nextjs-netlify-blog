@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Burger from "./Burger";
 import { useState } from "react";
 
+
 export default function Navigation() {
   const router = useRouter();
   const [active, setActive] = useState(false);
@@ -13,17 +14,31 @@ export default function Navigation() {
         <ul>
           <li>
             <Link href="/">
-              <a className={router.pathname === "/" ? "active" : null}>about</a>
+              <a
+                className={router.pathname === "/" || router.pathname === "/posts" ? "active" : null}
+                onClick={() => setActive(!active)}
+              >
+                blog
+              </a>
             </Link>
           </li>
           <li>
-            <Link href="/posts">
+            <Link href="/list">
               <a
-                className={
-                  router.pathname.startsWith("/posts") ? "active" : null
-                }
+                className={router.pathname.startsWith("/list") ? "active" : null}
+                onClick={() => setActive(!active)}
               >
-                blog
+                liste
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about">
+              <a
+                className={router.pathname.startsWith("/about") ? "active" : null}
+                onClick={() => setActive(!active)}
+              >
+                à propos
               </a>
             </Link>
           </li>
@@ -66,18 +81,18 @@ export default function Navigation() {
             .active {
               color: #222;
             }
-
             @media (min-width: 769px) {
               .container {
-                width: 7rem;
+                width: 10vw;
                 display: block;
               }
               ul {
                 opacity: 1;
-                width: 7rem;
+                width: 10vw;
                 top: auto;
                 display: block;
                 transform: translateY(0);
+                margin-top: 4rem;
               }
               li {
                 font-size: 1rem;

@@ -1,0 +1,67 @@
+--- 
+slug: cv-pwahost 
+title: Mon travail de réalisation de mon site - Mes CVs pro
+desc: J'ai un premier site web et je voudrais vous le faire voir à travers quelques explications. À la base ce site a été réalisé pour montrer mes compétences et mes expériences professionnelles ailleurs que sur une feuille .pdf. Pour montrer mon nouveau profil de développeur Web mais aussi pour dissimuler un cv sans expérience et avec des compétences fragiles.
+img: http://localhost:3000/images/mathilde-langevin-oamdoaY0qTs-unsplash_1200w900h.jpg
+date: 2021-04-21 
+author: ygoalen 
+tags: 
+  - web-static 
+--- 
+
+![alt text](http://localhost:3000/images/mathilde-langevin-oamdoaY0qTs-unsplash_1200w900h.jpg "Photo de présentation")
+
+## Introduction
+
+J'ai un premier site web et je voudrais vous le faire voir à travers quelques explications. À la base ce site a été réalisé pour montrer mes compétences et mes expériences professionnelles ailleurs que sur une feuille .pdf. Pour montrer mon nouveau profil de développeur Web mais aussi pour dissimuler un cv sans expérience et avec des compétences fragiles.
+
+Une liste des principaux liens disponibles du [site pwahost.xyz](https://pwahost.xyz/ "Site web static cv-pwahost.xyz") :
+
+![alt text](http://localhost:3000/images/cv-pwahost_1200w900h.jpg "Image de la page d'accueil du site")
+  - [dépôt Github](https://github.com/Cursusdev?tab=repositories "Dépôt Github du site cv-pwahost.xyz")
+  - [page dev web](https://pwahost.xyz/dev.html "Page web du développeur Web")
+  - [page pro btp](https://pwahost.xyz/pro.html "Page web du projeteur électricité")
+  - [cv développeur Web (pdf)](https://storage.googleapis.com/cv-pwahost/CV_DWWM_Y.Goalen.pdf "Cv développeur Web")
+  - [cv projeteur électricité (pdf)](https://storage.googleapis.com/cv-pwahost/CV_ProjeteurElec_Y.Goalen.pdf "CV projeteur électricité")
+
+Comme la gratuité est mon moteur de fonctionnement, j'ai choisi un site statique et m'y plonger pour y nager. Pour tout dire je sortais d'un [cours Udemy](https://www.udemy.com/course/formation-developpeur-web/ "Site de UDEMY cours de développeur web") pour débutant et j'ai décidé d'utiliser leur modèle de cv avec [Bootstrap](https://getbootstrap.com/ "Site de Bootstrap") et [JQuery](https://jquery.com/ "Site de JQuery"). Par la suite je me suis passé de dépendances, c'était mon premier gallot d'essais. 
+
+À travers ma veille technologique les Cores Web Vitals m'ont semblé essentiels. Alors que les dépendances avaient leurs propres changements, elles continueraient à pénaliser mes performances. Aussi leurs fonctionnalités ne couvraient pas tout ce que j'ai pu réaliser en m'en passant.
+
+Ci-après, une liste de mes fonctionnalités Javascript: 
+  - menu collant 
+  - chargement paresseux 
+  - page de fondu 
+  - chronologie dynamique 
+  - accordéon 
+  - modal 
+  - hamburger 
+  - "service Workers" 
+
+## Démarches
+
+Concernant le langage de balisage HTML, les ressources du web m'ont permis d'apprendre la plupart d'entre elles, notamment celles utilisant les images. Il a fallu que j'exerce les ratios autant que les pixels avec Paint. J'ai utilisé le logiciel Inkscape pour tous les fichiers svg, dans mon élan j'ai réalisé mon logo. J'ai réalisé des QRCodes que j'ai transformé en images avec une base64 obtenu avec une bibliothèque puis collée dans un fichier svg, etc...
+
+Pour réaliser mes fichiers bundles j'utilise [Webpack](https://webpack.js.org/ "Site de Webpack"). Faire preuve d'abnégation et de pugnacité pour sa mise en œuvre définie assez bien le contexte. Les fichiers statiques obtenus, la Phare m'a permis d'obtenir une occasion de rechercher des solutions sur le web, d'apprendre le SEO, les bonnes pratiques et l'accessibilité.
+
+La page web simple peut contenir des informations essentielles pour son fonctionnement mais l'objectif est probablement de connaître son sujet, avec le HTML sémantique par exemple. Le code optimisé des pages HTML avec le codes Javascript et CSS a été hébergé sur un site hébergement quelconque avec son domaine mais des frais m'imputés et ce ne serait pas la dernière solution retenue. Pour autant [Docker](https://www.docker.com/ "Site de Docker") me permettrait de reproduire un environnement de production Debian avec [Nginx](https://www.nginx.com/ "Site de Nginx") avec de l'entrainement.
+
+## Objectifs
+
+La ligne directrice de mon projet incluait la possibilité au recruteur de sélectionner le cv pour plus tard et de plusieurs façons, y compris en le posant dans un coin de son bureau (appareil digital). Le fichier .pdf via QRCode, via téléchargement et la mise à disposition d'un raccourci du site donnerait un contenu supplémentaire pour son utilisateur. En utilisant les Service Workers, j'obtenais une PWA (Application Web Progressive) avec un rendu plus rapide à la seconde utilisation et une utilisation hors réseaux possible.
+
+La partie web mobile a captivé mon attention, car le code CSS était volumineux et le HTML tout autant pour chacune des pages web. Alors que j'avais fini le contenu, un choix de maintenir en l'état m'amena vers de la revue de code. Aussi mon éditeur de code VSCode s'est révélé très efficace. J'ai pu faire du responsif de manière fluide et élégante tout en me déplaçant beaucoup dans autant de code avec deux écrans tout de même.
+
+## Production
+
+Le nom de domaine pwahost.xyz très économique est obtenue avec [Hostinger](https://www.hostinger.fr/ "Site de Hostinger") pour 1,39€/an TTC. L'acronyme présent pwa (Progressive Web App) et le mot anglais host pour hosting n'ont pas l'effet escompté. Aussi en 2020 il est sorti le film "Host" de Rob Savage, film d'horreur à énigme, donc le nom de domaine de mon site changera assurément.
+
+La recherche de performances avec chrome DevTools m'a permis de voir l'efficacité à fractionner le code d'un paquet effectué avec [Webpack](https://webpack.js.org/ "Site de Webpack"). Les notions d'import dynamique, de code critique et defer ont un certain potentiel pour lesquels je n'ai pas encore percé leurs efficacités réelles.
+
+L'inconvénient trouvé avec les fichiers .pdf de mon site c'est qu'avec les Services Workers, en cache-first, lorsqu'ils sont compilés, leurs poids influents dans les performances car ils sont comprises comme des assets. Aussi j'ai placé mes fichiers les plus lourds et inopérants au premier chargement dans le stockage de [Google Cloud](https://cloud.google.com/?hl=fr "Site de Google Cloud Plateform"). Les frais sont négligeables car > 0,01€/mo. Les performances des pages sont meilleures car le cloud effectue un rendu rapide.
+
+Toujours pas de job à l'horizon pour autant avec mon cv en ligne. J'ai capté un crédit d'utilisation des services de [Google Cloud Plateform](https://cloud.google.com/?hl=fr "Site de Google Cloud Plateform") pour 200€. Aussi la mise en pratique des images Docker dans le cloud est abordable et bien documentée. Je m'initie à l'intégration et à la livraison continue (CI/CD) et j'applique un pipeline qui ne me sert plus mais se constitue comme un bonus à mon site. L'hébergement [Firebase](https://firebase.google.com/?hl=fr "Site de Firebase") m'a semblé être une solution d'hébergement adéquate qui me dispense de frais d'hébergement grâce à des quotas d'offre de service généreux.
+
+## Conclusion
+
+Voilà, ce sont des choix qui me permettent de continuer plus vite et plus loin dans la réalisation de mon code. Il s'agit là de plusieurs pages Web statiques que tout développeur se doit de savoir réaliser. Bien sûr j'aurais des questions à celui qui, lors de mes prochaines rencontres, saurait me faire progresser sur mes travaux.

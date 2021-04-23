@@ -8,6 +8,8 @@ const postsDirectory = path.join(process.cwd(), "src/pages/posts");
 export type PostContent = {
   readonly date: string;
   readonly title: string;
+  readonly desc: string;
+  readonly img: string;
   readonly slug: string;
   readonly tags?: string[];
 };
@@ -30,12 +32,14 @@ function fetchPostContent(): PostContent[] {
       // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents, {
         engines: {
-          yaml: (s) => yaml.safeLoad(s, { schema: yaml.JSON_SCHEMA }) as object,
+          yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
         },
       });
       const matterData = matterResult.data as {
         date: string;
         title: string;
+        desc: string;
+        img: string;
         tags: string[];
         slug: string;
       };
