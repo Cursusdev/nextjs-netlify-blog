@@ -31,10 +31,10 @@ Open your terminal, cd into the directory you'd like to create the app in, and r
 $ yarn  
 $ yarn dev 
  
-
 Open your browser at this url http://localhost:3000 
-
 
 After that, set up your project as following the Netlify blog:
 
 [A Step-by-Step Guide: Deploying on Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
+
+Notice: For add new post, don't forget to add our tag in tags.yml file.

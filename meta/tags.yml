@@ -5,4 +5,6 @@ tags:
     name: web-static
   - slug: single-page
     name: single-page
+  - slug: blockchain
+    name: blockchain
 
