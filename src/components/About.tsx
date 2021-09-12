@@ -15,9 +15,9 @@ export default function About() {
           <span className="handle">maj 04/2021</span>
         </div>
         <div className="illustrations">
-          <img src="https://blogdevweb.xyz/images/feeling_proud-alt.svg" alt="Illustration Feeling Proud" />
-          <img src="https://blogdevweb.xyz/images/product_iteration-alt.svg" alt="Illustration Feeling Proud" width="10%" height="auto" />
-          <img src="https://blogdevweb.xyz/images/working_from_anywhere-alt.svg" alt="Illustration Feeling Proud" width="10%" height="auto" />
+          <img src="https://my.blogdevweb.xyz/images/feeling_proud-alt.svg" alt="Illustration Feeling Proud" />
+          <img src="https://my.blogdevweb.xyz/images/product_iteration-alt.svg" alt="Illustration Feeling Proud" width="10%" height="auto" />
+          <img src="https://my.blogdevweb.xyz/images/working_from_anywhere-alt.svg" alt="Illustration Feeling Proud" width="10%" height="auto" />
         </div>
         <div>
           <h2>Un Blog avec Next.js et Netlify.</h2>

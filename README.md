@@ -5,7 +5,7 @@ Using the Next.js framework allows you to generate a static site and Netlify is 
 
 This approach will allow the blog to evolve with the functionality of the CMS and the server-side rendering of the front-end application will allow the use of external services for the improvement of the content.
 
-The [blog](https://blogdevweb.xyz) is hosted on Netlify. It is written by myself in markdown with mdx files. The subjects of the articles are web development and JavaScript.
+The [blog](https://my.blogdevweb.xyz) is hosted on Netlify. It is written by myself in markdown with mdx files. The subjects of the articles are web development and JavaScript.
 
 ## Features
 
